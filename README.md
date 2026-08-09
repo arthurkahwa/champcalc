@@ -42,10 +42,12 @@ photos or team logos are used anywhere in the app or this repo — both are
 licensed IP not covered by any free data source, so the app uses initials
 avatars and team colors instead.
 
-## Privacy
+## Privacy & support
 
-Champ Calc collects no user data. See the [Privacy Policy](privacy.html)
-(requires GitHub Pages enabled on this repo, source: root of `master`).
+Champ Calc collects no user data beyond an opt-in push notification device
+token. See the [Privacy Policy](https://arthurkahwa.github.io/champcalc/privacy.html)
+and [Support](https://arthurkahwa.github.io/champcalc/support.html) pages,
+published via GitHub Pages from the root of `master`.
 
 ## License
 
