@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — Champ Calc</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    max-width: 40em;
+    margin: 3em auto;
+    padding: 0 1.25em;
+    line-height: 1.55;
+    color: #1c1c1e;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #f2f2f7; background: #000; }
+    a { color: #6ea8ff; }
+  }
+  h1 { margin-bottom: 0.2em; }
+  .updated { color: #8e8e93; font-size: 0.9em; margin-top: 0; }
+  .langs { color: #8e8e93; font-size: 0.85em; margin: 0.3em 0 1.5em; }
+  h2 { margin-top: 2em; }
+  ul { padding-inline-start: 1.2em; }
+</style>
+</head>
+<body>
+
+<h1>プライバシーポリシー</h1>
+<p class="updated">最終更新日: 2026年8月9日</p>
+<p class="langs">
+<a href="/champcalc/privacy.html">English</a> ·
+<a href="/champcalc/de/privacy.html">Deutsch</a> ·
+<a href="/champcalc/es/privacy.html">Español</a> ·
+<a href="/champcalc/fr/privacy.html">Français</a> ·
+<a href="/champcalc/ja/privacy.html">日本語</a> ·
+<a href="/champcalc/pt-BR/privacy.html">Português</a> ·
+<a href="/champcalc/ru/privacy.html">Русский</a> ·
+<a href="/champcalc/zh-Hans/privacy.html">简体中文</a> ·
+<a href="/champcalc/ar/privacy.html">العربية</a>
+</p>
+
+<p><strong>Champ Calcは、個人データを収集、保存、送信することは一切ありません。</strong>
+アカウントも登録も不要で、端末外に送信されるユーザーデータは存在しません。</p>
+
+<h2>アプリの動作</h2>
+<p>Champ Calcは、GitHub上にホストされている静的なJSONファイル
+（<code>raw.githubusercontent.com/arthurkahwa/champcalc</code>）から、
+公開されているF1の順位表とカレンダーデータを読み込み、そこから選手権の可能性を
+端末上で完結して計算します。これらのリクエストにはアカウントIDや端末IDなどの識別子、
+ユーザーコンテンツは一切含まれません。公開Webページを取得する際に誰でも送信するのと
+同じ種類のリクエストです。</p>
+
+<h2>端末内にのみ保存されるもの</h2>
+<ul>
+  <li><strong>設定情報</strong>（オンボーディングの完了状態、選択したドライバー／チームなど）
+  — iOS標準の<code>UserDefaults</code>を用いて端末内にのみ保存され、外部に送信されることは
+  ありません。</li>
+  <li><strong>シーズンデータJSONのローカルキャッシュ</strong> — アプリのCachesディレクトリに
+  保存され、オフライン時やデータソースが一時的に利用できない場合でもアプリが動作するように
+  します。こちらも外部に送信されることはありません。</li>
+</ul>
+<p>いずれも端末外へ送信されることはなく、アプリを削除すればこれらのデータも削除されます。</p>
+
+<h2>プッシュ通知</h2>
+<p>通知の許可を求められた際に同意した場合、Champ Calcはレース終了ごとに最大1件のプッシュ通知
+（タイトル獲得や数学的な敗退が確定した場合など）を送信します。これには端末がAPNsのデバイス
+トークンを登録する必要がありますが、このトークンは端末に通知を届けるためだけに、アプリ自身の
+通知配信機能にのみ送信され、分析・広告・その他の第三者サービスに送られることは一切ありません。
+通知の許可を拒否した場合、この機能は完全に無効化されますが、アプリの他の機能はすべて同様に
+利用できます。</p>
+
+<h2>行っていないこと</h2>
+<ul>
+  <li>分析・テレメトリ・クラッシュレポートSDKは使用していません。</li>
+  <li>広告や広告SDKは使用していません。</li>
+  <li>いかなる種類のサードパーティSDKも使用していません。</li>
+  <li>アカウント、サインイン、ユーザー生成コンテンツはありません。</li>
+  <li>トラッキングは行わず、誰とも共有・販売しません。</li>
+</ul>
+
+<h2>お子様のプライバシーについて</h2>
+<p>Champ Calcはデータを一切収集しないため、お子様を含む誰からもデータを意図的に収集することは
+ありません。アプリが端末外に送信し得る唯一のデータ — プッシュ通知のデバイストークン、しかも
+明示的に同意した場合のみ — はいかなる個人の識別情報とも結び付けられておらず、上記で説明した
+通知の配信のみに使用されます。</p>
+
+<h2>本ポリシーの変更</h2>
+<p>Champ Calcのデータの取り扱いが変更される場合は、まず本ページを更新し、その変更はApp Store
+Connectのプライバシー申告にも反映されます。</p>
+
+<h2>お問い合わせ</h2>
+<p>本ポリシーに関するご質問は
+<a href="mailto:champcalc_privacy@chapter.de">champcalc_privacy@chapter.de</a>
+までメールをお送りいただくか、
+<a href="https://github.com/arthurkahwa/champcalc">github.com/arthurkahwa/champcalc</a>
+にてIssueを作成してください。</p>
+
+</body>
+</html>

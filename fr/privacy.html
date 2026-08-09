@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité — Champ Calc</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    max-width: 40em;
+    margin: 3em auto;
+    padding: 0 1.25em;
+    line-height: 1.55;
+    color: #1c1c1e;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #f2f2f7; background: #000; }
+    a { color: #6ea8ff; }
+  }
+  h1 { margin-bottom: 0.2em; }
+  .updated { color: #8e8e93; font-size: 0.9em; margin-top: 0; }
+  .langs { color: #8e8e93; font-size: 0.85em; margin: 0.3em 0 1.5em; }
+  h2 { margin-top: 2em; }
+  ul { padding-inline-start: 1.2em; }
+</style>
+</head>
+<body>
+
+<h1>Politique de confidentialité</h1>
+<p class="updated">Dernière mise à jour : 9 août 2026</p>
+<p class="langs">
+<a href="/champcalc/privacy.html">English</a> ·
+<a href="/champcalc/de/privacy.html">Deutsch</a> ·
+<a href="/champcalc/es/privacy.html">Español</a> ·
+<a href="/champcalc/fr/privacy.html">Français</a> ·
+<a href="/champcalc/ja/privacy.html">日本語</a> ·
+<a href="/champcalc/pt-BR/privacy.html">Português</a> ·
+<a href="/champcalc/ru/privacy.html">Русский</a> ·
+<a href="/champcalc/zh-Hans/privacy.html">简体中文</a> ·
+<a href="/champcalc/ar/privacy.html">العربية</a>
+</p>
+
+<p><strong>Champ Calc ne collecte, ne stocke ni ne transmet aucune donnée
+personnelle.</strong> Il n'y a ni compte, ni inscription, ni aucune donnée
+utilisateur envoyée hors de votre appareil.</p>
+
+<h2>Ce que fait l'application</h2>
+<p>Champ Calc lit les classements et le calendrier de Formule 1,
+publiquement disponibles, à partir d'un fichier JSON statique hébergé sur
+GitHub (<code>raw.githubusercontent.com/arthurkahwa/champcalc</code>) et
+calcule à partir de ces données les chances de titre, entièrement sur
+votre appareil. Ces requêtes ne contiennent aucun identifiant de compte,
+d'appareil, ni aucun contenu utilisateur — ce sont les mêmes requêtes que
+celles effectuées par n'importe qui chargeant une page web publique.</p>
+
+<h2>Ce qui reste sur votre appareil</h2>
+<ul>
+  <li><strong>Préférences</strong> (par exemple, si l'intégration est
+  terminée, votre pilote/équipe sélectionné) — stockées localement via le
+  système standard d'iOS <code>UserDefaults</code>, jamais transmises.</li>
+  <li><strong>Un cache local</strong> du JSON des données de saison, stocké
+  dans le répertoire Caches de l'application, afin qu'elle continue de
+  fonctionner hors ligne ou en cas d'indisponibilité brève de la source de
+  données. Jamais transmis non plus.</li>
+</ul>
+<p>Aucune de ces données ne quitte jamais votre appareil. La suppression de
+l'application les supprime également.</p>
+
+<h2>Notifications push</h2>
+<p>Si vous acceptez lorsque cela vous est demandé, Champ Calc envoie au
+maximum une notification push par course terminée (par exemple, un titre
+remporté ou une élimination mathématique). Cela nécessite que votre
+appareil enregistre un jeton d'appareil APNs, envoyé uniquement à la
+fonction de diffusion des notifications propre à l'application — jamais à
+un service d'analyse, de publicité ou tiers — dans le seul but d'adresser
+cette notification à votre appareil. Si vous refusez l'autorisation, cela
+est entièrement désactivé ; toutes les autres fonctionnalités de
+l'application continuent de fonctionner normalement.</p>
+
+<h2>Ce que nous ne faisons pas</h2>
+<ul>
+  <li>Aucun SDK d'analyse, de télémétrie ou de rapport de plantage.</li>
+  <li>Aucune publicité ni SDK publicitaire.</li>
+  <li>Aucun SDK tiers, quel qu'il soit.</li>
+  <li>Aucun compte, connexion, ni contenu généré par l'utilisateur.</li>
+  <li>Aucun suivi, et rien n'est partagé ni vendu à qui que ce soit.</li>
+</ul>
+
+<h2>Confidentialité des enfants</h2>
+<p>Champ Calc ne collecte sciemment aucune donnée, y compris auprès des
+enfants, car l'application ne collecte aucune donnée. La seule information
+que l'application peut faire sortir de l'appareil — un jeton de
+notification push, et uniquement avec votre consentement explicite —
+n'est liée à aucune identité et sert uniquement à délivrer la notification
+décrite ci-dessus.</p>
+
+<h2>Modifications de cette politique</h2>
+<p>Si les pratiques de Champ Calc en matière de données venaient à changer,
+cette page serait mise à jour en premier, et le changement serait reflété
+dans les déclarations de confidentialité de l'application sur App Store
+Connect.</p>
+
+<h2>Contact</h2>
+<p>Questions sur cette politique : par e-mail à
+<a href="mailto:champcalc_privacy@chapter.de">champcalc_privacy@chapter.de</a>,
+ou en ouvrant une issue sur
+<a href="https://github.com/arthurkahwa/champcalc">github.com/arthurkahwa/champcalc</a>.</p>
+
+</body>
+</html>
