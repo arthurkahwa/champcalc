@@ -7,7 +7,11 @@ checkpoint race, not just the championship at season end.
 
 This repository is Champ Calc's **GitHub-as-backend**: no server, no database.
 Season data is a static JSON file, kept up to date by a scheduled GitHub
-Action, and read by the app directly from this repo's raw content.
+Action, and read by the app directly from this repo's raw content. It also
+hosts the app's public Privacy Policy and Support pages via GitHub Pages.
+
+**Status:** submitted to Apple for App Review (App Store Connect ID
+`6797891202`); not yet publicly available on the App Store.
 
 ## What's here
 
@@ -29,6 +33,11 @@ Action, and read by the app directly from this repo's raw content.
 - **`.github/workflows/update-season.yml`** — runs the update script every
   15 minutes on race weekends and once daily otherwise, and commits the
   result only if it changed.
+- **`privacy.html` / `support.html`** (and their per-language equivalents in
+  `de/`, `es/`, `fr/`, `ja/`, `pt-BR/`, `ru/`, `zh-Hans/`, `ar/`) — the app's
+  public Privacy Policy and Support pages, in the same 9 languages the app
+  itself is localized into. `index.html` links to all of them. Served via
+  GitHub Pages from the root of `master`.
 
 Once a season's final round is in, its data is locked in permanently
 (`seasonStatus: "final"`) and the pipeline stops touching it — the file
@@ -44,10 +53,15 @@ avatars and team colors instead.
 
 ## Privacy & support
 
-Champ Calc collects no user data beyond an opt-in push notification device
-token. See the [Privacy Policy](https://arthurkahwa.github.io/champcalc/privacy.html)
-and [Support](https://arthurkahwa.github.io/champcalc/support.html) pages,
-published via GitHub Pages from the root of `master`.
+Champ Calc collects no user data. See the
+[Privacy Policy](https://arthurkahwa.github.io/champcalc/privacy.html) and
+[Support](https://arthurkahwa.github.io/champcalc/support.html) pages —
+also available in German, Spanish, French, Japanese, Portuguese (Brazil),
+Russian, Chinese (Simplified), and Arabic (e.g.
+[`/de/privacy.html`](https://arthurkahwa.github.io/champcalc/de/privacy.html)).
+
+Push notifications are designed but **not part of this version** — deferred
+to a future release; the app sends none today.
 
 ## License
 
