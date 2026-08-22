@@ -2,7 +2,6 @@
   "calendar": [
     {
       "completed": true,
-      "country": "Australia",
       "date": "2026-03-08",
       "hasSprint": false,
       "id": "r1",
@@ -168,7 +167,6 @@
     },
     {
       "completed": true,
-      "country": "China",
       "date": "2026-03-15",
       "hasSprint": true,
       "id": "r2",
@@ -489,7 +487,6 @@
     },
     {
       "completed": true,
-      "country": "Japan",
       "date": "2026-03-29",
       "hasSprint": false,
       "id": "r3",
@@ -655,7 +652,6 @@
     },
     {
       "completed": true,
-      "country": "USA",
       "date": "2026-05-03",
       "hasSprint": true,
       "id": "r4",
@@ -976,7 +972,6 @@
     },
     {
       "completed": true,
-      "country": "Canada",
       "date": "2026-05-24",
       "hasSprint": true,
       "id": "r5",
@@ -1297,7 +1292,6 @@
     },
     {
       "completed": true,
-      "country": "Monaco",
       "date": "2026-06-07",
       "hasSprint": false,
       "id": "r6",
@@ -1463,7 +1457,6 @@
     },
     {
       "completed": true,
-      "country": "Spain",
       "date": "2026-06-14",
       "hasSprint": false,
       "id": "r7",
@@ -1629,7 +1622,6 @@
     },
     {
       "completed": true,
-      "country": "Austria",
       "date": "2026-06-28",
       "hasSprint": false,
       "id": "r8",
@@ -1795,7 +1787,6 @@
     },
     {
       "completed": true,
-      "country": "UK",
       "date": "2026-07-05",
       "hasSprint": true,
       "id": "r9",
@@ -2116,7 +2107,6 @@
     },
     {
       "completed": true,
-      "country": "Belgium",
       "date": "2026-07-19",
       "hasSprint": false,
       "id": "r10",
@@ -2282,7 +2272,6 @@
     },
     {
       "completed": true,
-      "country": "Hungary",
       "date": "2026-07-26",
       "hasSprint": false,
       "id": "r11",
@@ -2448,7 +2437,6 @@
     },
     {
       "completed": false,
-      "country": "Netherlands",
       "date": "2026-08-23",
       "hasSprint": true,
       "id": "r12",
@@ -2459,7 +2447,6 @@
     },
     {
       "completed": false,
-      "country": "Italy",
       "date": "2026-09-06",
       "hasSprint": false,
       "id": "r13",
@@ -2470,7 +2457,6 @@
     },
     {
       "completed": false,
-      "country": "Spain",
       "date": "2026-09-13",
       "hasSprint": false,
       "id": "r14",
@@ -2481,7 +2467,6 @@
     },
     {
       "completed": false,
-      "country": "Azerbaijan",
       "date": "2026-09-26",
       "hasSprint": false,
       "id": "r15",
@@ -2492,7 +2477,6 @@
     },
     {
       "completed": false,
-      "country": "Malaysia",
       "date": "2026-10-04",
       "hasSprint": false,
       "id": "r16",
@@ -2503,7 +2487,6 @@
     },
     {
       "completed": false,
-      "country": "Singapore",
       "date": "2026-10-11",
       "hasSprint": true,
       "id": "r17",
@@ -2514,7 +2497,6 @@
     },
     {
       "completed": false,
-      "country": "USA",
       "date": "2026-10-25",
       "hasSprint": false,
       "id": "r18",
@@ -2525,7 +2507,6 @@
     },
     {
       "completed": false,
-      "country": "Mexico",
       "date": "2026-11-01",
       "hasSprint": false,
       "id": "r19",
@@ -2536,7 +2517,6 @@
     },
     {
       "completed": false,
-      "country": "Brazil",
       "date": "2026-11-08",
       "hasSprint": false,
       "id": "r20",
@@ -2547,7 +2527,6 @@
     },
     {
       "completed": false,
-      "country": "USA",
       "date": "2026-11-22",
       "hasSprint": false,
       "id": "r21",
@@ -2558,7 +2537,6 @@
     },
     {
       "completed": false,
-      "country": "Qatar",
       "date": "2026-11-29",
       "hasSprint": false,
       "id": "r22",
@@ -2569,7 +2547,6 @@
     },
     {
       "completed": false,
-      "country": "UAE",
       "date": "2026-12-06",
       "hasSprint": false,
       "id": "r23",
@@ -2697,7 +2674,7 @@
   },
   "lastNotifiedRound": 11,
   "lastUpdatedRound": 11,
-  "pointsHash": "37aee139a1aa3c698134d09a71b231efe4f6be91f425a161819b73998da34679",
+  "pointsHash": "8f405e1272c70672d19902338d3e124da2213d966d25cac2076b0cc7f6d567d4",
   "pointsTable": {
     "fastestLapPoint": false,
     "racePoints": [
