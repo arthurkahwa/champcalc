@@ -2598,14 +2598,14 @@
       "teamId": "red_bull"
     },
     {
-      "id": "lawson",
-      "name": "Liam Lawson",
-      "teamId": "rb"
-    },
-    {
       "id": "gasly",
       "name": "Pierre Gasly",
       "teamId": "alpine"
+    },
+    {
+      "id": "lawson",
+      "name": "Liam Lawson",
+      "teamId": "rb"
     },
     {
       "id": "arvid_lindblad",
@@ -2666,6 +2666,11 @@
       "id": "perez",
       "name": "Sergio P\u00e9rez",
       "teamId": "cadillac"
+    },
+    {
+      "id": "tsunoda",
+      "name": "Yuki Tsunoda",
+      "teamId": "rb"
     }
   ],
   "eliminationLog": {
@@ -2674,7 +2679,7 @@
   },
   "lastNotifiedRound": 11,
   "lastUpdatedRound": 11,
-  "pointsHash": "8f405e1272c70672d19902338d3e124da2213d966d25cac2076b0cc7f6d567d4",
+  "pointsHash": "b604edcd38bbbbbddb783011231adfad8ec7dcad241e4e036585639e0bd4cbad",
   "pointsTable": {
     "fastestLapPoint": false,
     "racePoints": [
