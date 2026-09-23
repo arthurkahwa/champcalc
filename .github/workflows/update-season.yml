@@ -26,6 +26,11 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      # Schema gate's own tests (validate_season mirrors the app's Swift
+      # models) — also re-validates the committed season file.
+      - name: Test pipeline scripts
+        run: python -m unittest discover -s scripts
+
       - name: Fetch results and recompute season data
         id: update
         env:

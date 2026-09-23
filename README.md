@@ -25,7 +25,12 @@ hosts the app's public Privacy Policy and Support pages via GitHub Pages.
   results from [Jolpica-F1](https://api.jolpi.ca/ergast/f1) (a free,
   open-source successor to the retired Ergast API), diffs against the
   committed JSON by hash, and writes an update only when something actually
-  changed.
+  changed. Before writing, `validate_season()` checks the result against the
+  app's data model and refuses to publish anything the app couldn't decode
+  (e.g. a calendar entry missing its `country`).
+- **`scripts/test_update_season.py`** — unit tests for that schema check
+  (`python -m unittest discover -s scripts`); the workflow runs them before
+  every update, which also re-validates the committed season file.
 - **`scripts/f1_math.py`** — the championship-math reference implementation
   (max points remaining, elimination/clinch checks, the position ladder,
   tiebreak countback). Ported function-for-function into the app's Swift

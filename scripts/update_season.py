@@ -74,6 +74,95 @@ TEAM_COLORS: dict[str, str] = {
 DEFAULT_TEAM_COLOR = '#8E8E93'
 
 
+# --- Schema gate: mirrors the app's Swift Codable models (Season,
+# RaceWeekend, RaceResult, Driver, Team, F1Engine.PointsTable). Anything
+# that fails here would make the app's JSONDecoder reject the *whole*
+# season, so the pipeline refuses to publish it instead. Keep in sync with
+# those models. Unknown extra keys are fine — the app ignores them. ---
+_STR, _INT, _BOOL = 'string', 'int', 'bool'
+
+
+def _type_ok(value, kind: str) -> bool:
+    if kind == _STR:
+        return isinstance(value, str)
+    if kind == _BOOL:
+        return isinstance(value, bool)
+    return isinstance(value, int) and not isinstance(value, bool)
+
+
+def _check_fields(obj, where: str, fields: dict[str, str], problems: list[str],
+                  optional: frozenset[str] = frozenset()) -> None:
+    if not isinstance(obj, dict):
+        problems.append(f'{where}: expected an object')
+        return
+    for key, kind in fields.items():
+        path = f'{where}.{key}' if where else key
+        if key not in obj or (obj[key] is None and key in optional):
+            if key not in optional:
+                problems.append(f'{path}: missing')
+        elif not _type_ok(obj[key], kind):
+            problems.append(f'{path}: expected {kind}, got {obj[key]!r}')
+
+
+def _check_list(obj: dict, key: str, where: str, problems: list[str], *, non_empty: bool) -> list:
+    path = f'{where}.{key}' if where else key
+    if key not in obj:
+        problems.append(f'{path}: missing')
+        return []
+    value = obj[key]
+    if not isinstance(value, list):
+        problems.append(f'{path}: expected a list')
+        return []
+    if non_empty and not value:
+        problems.append(f'{path}: must not be empty')
+    return value
+
+
+def validate_season(season: dict) -> list[str]:
+    """Returns every way `season` would fail to decode in the app (empty
+    list = safe to publish)."""
+    problems: list[str] = []
+    _check_fields(season, '', {'year': _INT}, problems)
+    if season.get('seasonStatus') not in ('live', 'final'):
+        problems.append(f"seasonStatus: expected 'live' or 'final', got {season.get('seasonStatus')!r}")
+
+    for i, driver in enumerate(_check_list(season, 'drivers', '', problems, non_empty=True)):
+        _check_fields(driver, f'drivers[{i}]', {'id': _STR, 'name': _STR, 'teamId': _STR}, problems)
+    for i, team in enumerate(_check_list(season, 'teams', '', problems, non_empty=True)):
+        _check_fields(team, f'teams[{i}]', {'id': _STR, 'name': _STR, 'colorHex': _STR}, problems)
+
+    table = season.get('pointsTable')
+    if not isinstance(table, dict):
+        problems.append('pointsTable: missing')
+    else:
+        for key in ('racePoints', 'sprintPoints'):
+            for j, points in enumerate(_check_list(table, key, 'pointsTable', problems, non_empty=True)):
+                if not _type_ok(points, _INT):
+                    problems.append(f'pointsTable.{key}[{j}]: expected int, got {points!r}')
+        _check_fields(table, 'pointsTable', {'fastestLapPoint': _BOOL}, problems)
+
+    for i, race in enumerate(_check_list(season, 'calendar', '', problems, non_empty=True)):
+        where = f'calendar[{i}]'
+        _check_fields(race, where, {
+            'id': _STR, 'name': _STR, 'round': _INT, 'date': _STR,
+            'hasSprint': _BOOL, 'completed': _BOOL, 'country': _STR,
+        }, problems)
+        if not isinstance(race, dict):
+            continue
+        for key in ('raceResult', 'sprintResult'):
+            results = race.get(key)
+            if results is None:
+                continue
+            if not isinstance(results, list):
+                problems.append(f'{where}.{key}: expected a list or null')
+                continue
+            for j, result in enumerate(results):
+                _check_fields(result, f'{where}.{key}[{j}]', {
+                    'driverId': _STR, 'teamId': _STR, 'position': _INT, 'points': _INT, 'dnf': _BOOL,
+                }, problems, optional=frozenset({'position'}))
+    return problems
+
+
 def fetch_json(path: str, retries: int = 3, backoff_seconds: float = 2.0) -> dict:
     """Section 12.6 — retry/backoff so a transient Jolpica outage doesn't
     silently skip an update cycle. Raises after exhausting retries; the
@@ -357,6 +446,13 @@ def main() -> None:
                 'constructors': constructor_result['eliminationLog'],
             },
         }
+        problems = validate_season(updated)
+        if problems:
+            print('Refusing to publish season JSON the app cannot decode:', file=sys.stderr)
+            for problem in problems:
+                print(f'  - {problem}', file=sys.stderr)
+            sys.exit(1)
+
         DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
         DATA_PATH.write_text(json.dumps(updated, indent=2, sort_keys=True))
 
