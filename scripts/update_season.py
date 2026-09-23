@@ -140,6 +140,11 @@ def fetch_calendar() -> list[dict]:
             'name': r['raceName'],
             'date': r['date'],
             'has_sprint': 'Sprint' in r,
+            # Jolpica's own country name for the circuit (e.g. "Australia",
+            # "USA", "UK") — passed through as-is, never hardcoded here; the
+            # app owns turning it into a flag (Section 2: no season-shaped
+            # data, including the calendar's locations, lives in code).
+            'country': r['Circuit']['Location']['country'],
         }
         for r in races
     ]
@@ -267,6 +272,7 @@ def build_calendar(calendar_meta: list[dict], completed_rounds: int) -> list[dic
             'date': meta['date'],
             'hasSprint': meta['has_sprint'],
             'completed': is_completed,
+            'country': meta['country'],
             'raceResult': race_result,
             'sprintResult': sprint_result,
         })
