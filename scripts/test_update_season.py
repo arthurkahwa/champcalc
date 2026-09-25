@@ -100,7 +100,7 @@ class EliminationLogRoundTripTests(unittest.TestCase):
     POINTS = {'a': 100, 'b': 90, 'c': 0}
 
     def _first_run_season(self) -> dict:
-        result = compute_ladder(self.POINTS, 0, 0, False, {}, 13)
+        result = compute_ladder(self.POINTS, 0, 0, False, {}, {}, 13)
         self.assertTrue(result['new_events'])  # 'b' is out of P1, 'c' of P1/P2
         committed = json.dumps({'eliminationLog': {'drivers': result['eliminationLog']}}, sort_keys=True)
         return parse_existing(json.loads(committed))
@@ -111,14 +111,34 @@ class EliminationLogRoundTripTests(unittest.TestCase):
 
     def test_known_eliminations_are_not_reported_again(self):
         log = self._first_run_season()['eliminationLog']['drivers']
-        result = compute_ladder(self.POINTS, 0, 0, False, log, 14)
+        result = compute_ladder(self.POINTS, 0, 0, False, log, {}, 14)
         self.assertEqual([e for e in result['new_events'] if e['event'] == 'eliminated'], [])
         self.assertEqual(result['eliminationLog'], {'b': {1: 13}, 'c': {1: 13, 2: 13}})
 
     def test_updated_log_can_be_written_with_sorted_keys(self):
         log = self._first_run_season()['eliminationLog']['drivers']
-        result = compute_ladder(self.POINTS, 0, 0, False, log, 14)
+        result = compute_ladder(self.POINTS, 0, 0, False, log, {}, 14)
         json.dumps(result['eliminationLog'], sort_keys=True)
+
+
+class ClinchLogTests(unittest.TestCase):
+    """A clinch is a once-per-season event: without a record of it, every
+    race after the title was decided would push "clinched" again."""
+
+    POINTS = {'a': 100, 'b': 90, 'c': 0}
+
+    def test_clinch_is_reported_and_recorded(self):
+        result = compute_ladder(self.POINTS, 0, 0, False, {}, {}, 13)
+        self.assertIn({'entity_id': 'a', 'position': 1, 'event': 'clinched'}, result['new_events'])
+        self.assertEqual(result['clinchLog'], {'a': 13})
+
+    def test_recorded_clinch_is_not_reported_again(self):
+        first = compute_ladder(self.POINTS, 0, 0, False, {}, {}, 13)
+        committed = json.dumps({'clinchLog': {'drivers': first['clinchLog']}}, sort_keys=True)
+        clinch_log = parse_existing(json.loads(committed))['clinchLog']['drivers']
+        second = compute_ladder(self.POINTS, 0, 0, False, first['eliminationLog'], clinch_log, 14)
+        self.assertEqual([e for e in second['new_events'] if e['event'] == 'clinched'], [])
+        self.assertEqual(second['clinchLog'], {'a': 13})
 
 
 if __name__ == '__main__':

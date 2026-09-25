@@ -325,7 +325,8 @@ def load_existing() -> dict:
 
 
 def compute_ladder(current_points: dict[str, int], remaining_races: int, remaining_sprints: int,
-                    is_constructor: bool, elimination_log: dict, completed_rounds: int) -> dict:
+                    is_constructor: bool, elimination_log: dict, clinch_log: dict[str, int],
+                    completed_rounds: int) -> dict:
     """Section 4.7/4.8, used only to detect newly-eliminated/newly-clinched
     entities for the bundled push-notification payload — the app itself
     recomputes its own Position Ladder client-side from the raw calendar
@@ -348,12 +349,15 @@ def compute_ladder(current_points: dict[str, int], remaining_races: int, remaini
                 elimination_log = update_elimination_log(
                     elimination_log, eid, p, completed_rounds, True
                 )
-            if row['state'] == 'guaranteed' and p == 1:
+            if row['state'] == 'guaranteed' and p == 1 and eid not in clinch_log:
                 # Clinch (P=1) is the only "guaranteed" event worth a push —
                 # guaranteeing lower positions happens too often to be newsworthy.
+                # Recorded like eliminations so it's announced once, not every
+                # remaining race.
                 new_events.append({'entity_id': eid, 'position': p, 'event': 'clinched'})
+                clinch_log = {**clinch_log, eid: completed_rounds}
 
-    return {'eliminationLog': elimination_log, 'new_events': new_events}
+    return {'eliminationLog': elimination_log, 'clinchLog': clinch_log, 'new_events': new_events}
 
 
 def build_calendar(calendar_meta: list[dict], completed_rounds: int) -> list[dict]:
@@ -416,11 +420,13 @@ def main() -> None:
     if changed:
         driver_result = compute_ladder(
             driver_points, remaining_races, remaining_sprints, False,
-            existing.get('eliminationLog', {}).get('drivers', {}), completed_rounds,
+            existing.get('eliminationLog', {}).get('drivers', {}),
+            existing.get('clinchLog', {}).get('drivers', {}), completed_rounds,
         )
         constructor_result = compute_ladder(
             constructor_points, remaining_races, remaining_sprints, True,
-            existing.get('eliminationLog', {}).get('constructors', {}), completed_rounds,
+            existing.get('eliminationLog', {}).get('constructors', {}),
+            existing.get('clinchLog', {}).get('constructors', {}), completed_rounds,
         )
 
         if is_new_race_result:
@@ -459,6 +465,10 @@ def main() -> None:
             'eliminationLog': {
                 'drivers': driver_result['eliminationLog'],
                 'constructors': constructor_result['eliminationLog'],
+            },
+            'clinchLog': {
+                'drivers': driver_result['clinchLog'],
+                'constructors': constructor_result['clinchLog'],
             },
         }
         problems = validate_season(updated)
