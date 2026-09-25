@@ -298,9 +298,24 @@ def remaining_events(calendar: list[dict], completed_rounds: int) -> tuple[int, 
     return full_races, sprints
 
 
+def parse_existing(raw: dict) -> dict:
+    """JSON object keys are always strings, so the elimination log's
+    position keys come back as '1', '2', ... — restore them to ints so
+    they match the positions compute_ladder checks and inserts."""
+    log = raw.get('eliminationLog', {})
+    raw['eliminationLog'] = {
+        kind: {
+            entity_id: {int(p): race_index for p, race_index in positions.items()}
+            for entity_id, positions in entities.items()
+        }
+        for kind, entities in log.items()
+    }
+    return raw
+
+
 def load_existing() -> dict:
     if DATA_PATH.exists():
-        return json.loads(DATA_PATH.read_text())
+        return parse_existing(json.loads(DATA_PATH.read_text()))
     return {
         'year': int(SEASON_YEAR),
         'seasonStatus': 'live',

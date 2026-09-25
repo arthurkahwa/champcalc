@@ -10,7 +10,7 @@ import json
 import unittest
 from pathlib import Path
 
-from update_season import validate_season
+from update_season import compute_ladder, parse_existing, validate_season
 
 
 def valid_season() -> dict:
@@ -89,6 +89,36 @@ class ValidateSeasonTests(unittest.TestCase):
         season = valid_season()
         season['drivers'] = []
         self.assertTrue(any('drivers' in p for p in validate_season(season)))
+
+
+class EliminationLogRoundTripTests(unittest.TestCase):
+    """The committed JSON turns the log's int position keys into strings.
+    Reading them back as strings made every later run re-report old
+    eliminations and then crash on json.dumps(sort_keys=True) with mixed
+    int/str keys — the pipeline silently stopped publishing after Round 13."""
+
+    POINTS = {'a': 100, 'b': 90, 'c': 0}
+
+    def _first_run_season(self) -> dict:
+        result = compute_ladder(self.POINTS, 0, 0, False, {}, 13)
+        self.assertTrue(result['new_events'])  # 'b' is out of P1, 'c' of P1/P2
+        committed = json.dumps({'eliminationLog': {'drivers': result['eliminationLog']}}, sort_keys=True)
+        return parse_existing(json.loads(committed))
+
+    def test_positions_are_ints_after_loading(self):
+        log = self._first_run_season()['eliminationLog']['drivers']
+        self.assertEqual(log, {'b': {1: 13}, 'c': {1: 13, 2: 13}})
+
+    def test_known_eliminations_are_not_reported_again(self):
+        log = self._first_run_season()['eliminationLog']['drivers']
+        result = compute_ladder(self.POINTS, 0, 0, False, log, 14)
+        self.assertEqual([e for e in result['new_events'] if e['event'] == 'eliminated'], [])
+        self.assertEqual(result['eliminationLog'], {'b': {1: 13}, 'c': {1: 13, 2: 13}})
+
+    def test_updated_log_can_be_written_with_sorted_keys(self):
+        log = self._first_run_season()['eliminationLog']['drivers']
+        result = compute_ladder(self.POINTS, 0, 0, False, log, 14)
+        json.dumps(result['eliminationLog'], sort_keys=True)
 
 
 if __name__ == '__main__':
