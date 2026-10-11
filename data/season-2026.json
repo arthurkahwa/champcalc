@@ -3535,14 +3535,14 @@
       "teamId": "ferrari"
     },
     {
-      "id": "norris",
-      "name": "Lando Norris",
-      "teamId": "mclaren"
-    },
-    {
       "id": "max_verstappen",
       "name": "Max Verstappen",
       "teamId": "red_bull"
+    },
+    {
+      "id": "norris",
+      "name": "Lando Norris",
+      "teamId": "mclaren"
     },
     {
       "id": "piastri",
@@ -3646,14 +3646,16 @@
       },
       "cadillac": {
         "1": 13,
-        "2": 15
+        "2": 15,
+        "3": 16
       },
       "haas": {
         "1": 13,
         "2": 16
       },
       "rb": {
-        "1": 14
+        "1": 14,
+        "2": 16
       },
       "williams": {
         "1": 13,
@@ -3665,13 +3667,16 @@
         "1": 13,
         "2": 15,
         "3": 16,
-        "4": 16
+        "4": 16,
+        "5": 16,
+        "6": 16
       },
       "alonso": {
         "1": 13,
         "2": 15,
         "3": 16,
-        "4": 16
+        "4": 16,
+        "5": 16
       },
       "arvid_lindblad": {
         "1": 14,
@@ -3685,7 +3690,9 @@
       "bortoleto": {
         "1": 14,
         "2": 15,
-        "3": 16
+        "3": 16,
+        "4": 16,
+        "5": 16
       },
       "bottas": {
         "1": 13,
@@ -3711,7 +3718,8 @@
         "1": 13,
         "2": 15,
         "3": 16,
-        "4": 16
+        "4": 16,
+        "5": 16
       },
       "lawson": {
         "1": 15
@@ -3720,7 +3728,8 @@
         "1": 13,
         "2": 15,
         "3": 16,
-        "4": 16
+        "4": 16,
+        "5": 16
       },
       "perez": {
         "1": 13,
@@ -3737,7 +3746,8 @@
         "1": 13,
         "2": 15,
         "3": 16,
-        "4": 16
+        "4": 16,
+        "5": 16
       },
       "stroll": {
         "1": 13,
@@ -3759,7 +3769,7 @@
   },
   "lastNotifiedRound": 16,
   "lastUpdatedRound": 16,
-  "pointsHash": "889190f2e8340c5824f2f91703d18e9dac699f6f7628e061fad6361c3dce5b64",
+  "pointsHash": "7e9ef4fde57c1b98d7684fb457c26e6fb7788f0a50189b661a98b93f4b8f6607",
   "pointsTable": {
     "fastestLapPoint": false,
     "racePoints": [
