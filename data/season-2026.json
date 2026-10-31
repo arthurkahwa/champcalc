@@ -4093,6 +4093,11 @@
       "id": "perez",
       "name": "Sergio P\u00e9rez",
       "teamId": "cadillac"
+    },
+    {
+      "id": "ryo_hirakawa",
+      "name": "Ryo Hirakawa",
+      "teamId": "haas"
     }
   ],
   "eliminationLog": {
@@ -4269,6 +4274,15 @@
       "piastri": {
         "1": 16
       },
+      "ryo_hirakawa": {
+        "1": 18,
+        "2": 18,
+        "3": 18,
+        "4": 18,
+        "5": 18,
+        "6": 18,
+        "7": 18
+      },
       "sainz": {
         "1": 13,
         "2": 15,
@@ -4300,7 +4314,7 @@
   },
   "lastNotifiedRound": 18,
   "lastUpdatedRound": 18,
-  "pointsHash": "d4684f879c9a1a6b8e366d53d983d485692ad67fa1b7952201c73269148627b6",
+  "pointsHash": "b0b5c1e2307b14296a1c9a746e696e320a036ad66d669ac1901633b8b603b6ea",
   "pointsTable": {
     "fastestLapPoint": false,
     "racePoints": [
