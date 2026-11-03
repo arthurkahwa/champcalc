@@ -3970,80 +3970,80 @@
         },
         {
           "dnf": false,
-          "driverId": "piastri",
+          "driverId": "lawson",
           "points": 6,
           "position": 7,
-          "teamId": "mclaren"
-        },
-        {
-          "dnf": false,
-          "driverId": "colapinto",
-          "points": 4,
-          "position": 8,
-          "teamId": "alpine"
-        },
-        {
-          "dnf": false,
-          "driverId": "lawson",
-          "points": 2,
-          "position": 9,
           "teamId": "rb"
         },
         {
           "dnf": false,
-          "driverId": "gasly",
-          "points": 1,
-          "position": 10,
-          "teamId": "alpine"
-        },
-        {
-          "dnf": false,
           "driverId": "bortoleto",
-          "points": 0,
-          "position": 11,
+          "points": 4,
+          "position": 8,
           "teamId": "audi"
         },
         {
           "dnf": false,
           "driverId": "hadjar",
-          "points": 0,
-          "position": 12,
+          "points": 2,
+          "position": 9,
           "teamId": "red_bull"
         },
         {
           "dnf": false,
           "driverId": "ryo_hirakawa",
-          "points": 0,
-          "position": 13,
+          "points": 1,
+          "position": 10,
           "teamId": "haas"
         },
         {
           "dnf": false,
           "driverId": "albon",
           "points": 0,
-          "position": 14,
+          "position": 11,
           "teamId": "williams"
         },
         {
           "dnf": false,
           "driverId": "sainz",
           "points": 0,
-          "position": 15,
+          "position": 12,
           "teamId": "williams"
+        },
+        {
+          "dnf": false,
+          "driverId": "piastri",
+          "points": 0,
+          "position": 13,
+          "teamId": "mclaren"
         },
         {
           "dnf": false,
           "driverId": "hulkenberg",
           "points": 0,
-          "position": 16,
+          "position": 14,
           "teamId": "audi"
+        },
+        {
+          "dnf": false,
+          "driverId": "colapinto",
+          "points": 0,
+          "position": 15,
+          "teamId": "alpine"
         },
         {
           "dnf": false,
           "driverId": "perez",
           "points": 0,
-          "position": 17,
+          "position": 16,
           "teamId": "cadillac"
+        },
+        {
+          "dnf": false,
+          "driverId": "gasly",
+          "points": 0,
+          "position": 17,
+          "teamId": "alpine"
         },
         {
           "dnf": true,
@@ -4202,13 +4202,13 @@
       "teamId": "haas"
     },
     {
-      "id": "hulkenberg",
-      "name": "Nico H\u00fclkenberg",
+      "id": "bortoleto",
+      "name": "Gabriel Bortoleto",
       "teamId": "audi"
     },
     {
-      "id": "bortoleto",
-      "name": "Gabriel Bortoleto",
+      "id": "hulkenberg",
+      "name": "Nico H\u00fclkenberg",
       "teamId": "audi"
     },
     {
@@ -4237,6 +4237,11 @@
       "teamId": "rb"
     },
     {
+      "id": "ryo_hirakawa",
+      "name": "Ryo Hirakawa",
+      "teamId": "haas"
+    },
+    {
       "id": "stroll",
       "name": "Lance Stroll",
       "teamId": "aston_martin"
@@ -4245,11 +4250,6 @@
       "id": "bottas",
       "name": "Valtteri Bottas",
       "teamId": "cadillac"
-    },
-    {
-      "id": "ryo_hirakawa",
-      "name": "Ryo Hirakawa",
-      "teamId": "haas"
     },
     {
       "id": "perez",
@@ -4316,7 +4316,8 @@
         "4": 16,
         "5": 16,
         "6": 16,
-        "7": 18
+        "7": 18,
+        "8": 19
       },
       "alonso": {
         "1": 13,
@@ -4441,7 +4442,9 @@
       "piastri": {
         "1": 16,
         "2": 19,
-        "3": 19
+        "3": 19,
+        "4": 19,
+        "5": 19
       },
       "russell": {
         "1": 19
@@ -4489,7 +4492,7 @@
   },
   "lastNotifiedRound": 19,
   "lastUpdatedRound": 19,
-  "pointsHash": "f591ca2a3f68a613a4ac5dd36592b8bca089dcf88b14117b89dfc42a6de498de",
+  "pointsHash": "cb98d480a41066bec6e0a3aea1164736661916ce37f9261c43e38e5e2553be57",
   "pointsTable": {
     "fastestLapPoint": false,
     "racePoints": [
