@@ -4255,6 +4255,11 @@
       "id": "perez",
       "name": "Sergio P\u00e9rez",
       "teamId": "cadillac"
+    },
+    {
+      "id": "rafael_camara",
+      "name": "Rafael Camara",
+      "teamId": "haas"
     }
   ],
   "eliminationLog": {
@@ -4446,6 +4451,16 @@
         "4": 19,
         "5": 19
       },
+      "rafael_camara": {
+        "1": 19,
+        "2": 19,
+        "3": 19,
+        "4": 19,
+        "5": 19,
+        "6": 19,
+        "7": 19,
+        "8": 19
+      },
       "russell": {
         "1": 19
       },
@@ -4492,7 +4507,7 @@
   },
   "lastNotifiedRound": 19,
   "lastUpdatedRound": 19,
-  "pointsHash": "cb98d480a41066bec6e0a3aea1164736661916ce37f9261c43e38e5e2553be57",
+  "pointsHash": "796a3786e8157cbcb71324f223cae5155d4e2f7721c578ffb656347f05324851",
   "pointsTable": {
     "fastestLapPoint": false,
     "racePoints": [
